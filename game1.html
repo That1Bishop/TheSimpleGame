@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+#logo {
+  position:absolute;
+  left:50px;
+  width:90px;
+  height:90px;
+  margin:5px;
+}
+</style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body background="8.jpg">
+
+
+
+  <button id="left">&laquo;</button> <button id="right">&raquo;</button>
+<button id="up">&uarr;</button>	<button id="down">&darr;</button>
+<div class="img" id="logo">
+  <a href="xwing.png">
+  <img src="xwing.png" width="95" height="84" >
+  </a>
+</div>
+
+
+<script>
+
+$("#right").click(function(){
+  $("#logo").animate({"left": "+=50px"}, "slow");
+});
+
+$("#left").click(function(){
+  $("#logo").animate({"left": "-=50px"}, "slow");
+});
+
+$("#up").click(function(){
+  $("#logo").animate({"top": "-=50px"}, "slow");
+});
+
+$("#down").click(function(){
+  $("#logo").animate({"top": "+=50px"}, "slow");
+});
+
+$(document).keydown(function(e) { 
+	//up key
+    if (e.keyCode == 38) {
+		$("#logo").stop().animate({"top": "-=50px"}, "slow");
+	}
+	//down key
+	else if(e.keyCode == 40) {
+$("#logo").stop().animate({"top": "+=50px"}, "slow")
+}
+	//left key
+	else if(e.keyCode == 37) {
+$("#logo").stop().animate({"left": "-=50px"}, "slow");
+}
+	//right key
+	else if(e.keyCode == 39) { $("#logo").stop().animate({"left": "+=50px"}, "slow");
+}
+});
+</script>
+
+</body>

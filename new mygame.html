@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <style>
+div {
+  position:absolute;
+  background-color:#abc;
+  left:50px;
+  width:90px;
+  height:90px;
+  margin:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+	
+<button id="left">&laquo;
+</button> 
+	
+	<button id="right">&raquo;</button>
+
+	<button id="up">&uarr;</button>
+
+	<button id="down">&darr;</button>
+
+
+<div id="block">
+</div>
+
+
+<script>
+
+
+var el = document.getElementById("block");
+
+	el.topCurrent = 0;
+	
+el.leftCurrent = 0;
+
+
+el.moveDown = function()
+{
+		el.topCurrent += 50;
+	
+	el.style.top=el.topCurrent + 'px';	
+
+	};
+
+
+el.moveUp = function(){
+		el.topCurrent -= 50;
+	
+	el.style.top=el.topCurrent + 'px';	
+	};
+
+
+el.moveLeft = function(){
+		el.leftCurrent -= 50;
+	
+	el.style.left=el.leftCurrent + 'px';	
+	};
+
+
+el.moveRight = function(){
+		el.leftCurrent += 50;
+	
+	el.style.left=el.leftCurrent + 'px';	
+	};
+
+
+
+document.onkeydown=function(e)
+{
+	switch(e.keyCode)	
+	{
+	
+
+//up key
+	
+case 38:
+		el.moveUp();
+		break;
+	
+
+//down key
+
+	case 40:
+		el.moveDown();
+		break;
+
+//left key
+	case 37:
+		el.moveLeft();
+		break;
+
+
+//right key
+	case 39:
+		el.moveRight();
+		break;
+
+	}	
+};
+
+
+
+
+/*
+
+
+
+var Gravity = (function() {
+    
+var Construct = function(rate, speed, bottomBoundary) {
+      
+  this.falling = [];
+       
+ this.rate = rate;
+      
+  this.speed = speed;
+    
+    this.bottomBoundary = bottomBoundary;
+ 
+       this.activeInterval = null;
+};
+
+
+    Construct.prototype = {
+        activate: function() {
+  
+          this.activeInterval = setInterval(this.act, this.speed);
+
+},
+act: function() {
+    for(var i = 0; i < this.falling.length; i++) {
+       
+ var newPosition = Math.min(
+this.falling[i].lastPosition + this.rate,
+this.bottomBoundary
+);
+
+      
+  this.falling[i].style.top = newPosition + ‘px’;
+    
+    this.falling[i].lastPosition = newPosition;
+}
+}
+};
+
+   
+ return Construct;
+})();
+
+var myGravity = new Gravity(3, 20, 500);
+
+myGravity.falling.push(myObjectThatFalls);
+myGravity.activate();
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+var yVel = 0;
+
+var gravity = 1.2;
+
+var isJumping = false;
+var charecter="#block"
+ 
+function jump() {
+    if (isJumping == false) {
+      
+  yVel = -15;
+        isJumping = true;
+  
+  }
+}
+ 
+function gameloop(){
+ if (isJumping) {
+    
+ yVel += gravity;
+  
+   logo.y += yVel;
+       
+  if (character.y > characterGround) {
+         
+    character.y = characterGround;
+    
+        yVel = 0;
+         
+    isJumping = false;
+            }
+     }
+}
+
+jump("#block")
+gameloop("#block")
+/*
+
+</script>
+
+
+</body>
